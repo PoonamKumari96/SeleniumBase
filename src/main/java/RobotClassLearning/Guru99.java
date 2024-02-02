@@ -8,11 +8,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
 
 public class Guru99 {
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -21,6 +23,9 @@ public class Guru99 {
         chromeOptions.addExtensions(new File("adblock.crx"));
 
         WebDriver driver = new ChromeDriver(chromeOptions);
+
+//        driver.manage().timeouts().implicitlyWait(10, Duration.of(10, TemporalUnit)) ;
+
         Thread.sleep(6000);
         driver.get("https://www.demo.guru99.com/");
         WebElement email = driver.findElement(By.name("emailid"));
@@ -37,10 +42,10 @@ public class Guru99 {
         Actions action = new Actions(driver);
 
         //Open Agile Project
-        agileProjectPage(driver);
+   //     agileProjectPage(driver);
 
         //Open Bank Project
-        bankProjectPage(driver);
+   //     bankProjectPage(driver);
 
 
         //Open Security Project
@@ -123,25 +128,47 @@ public class Guru99 {
         securityProjectPassword.sendKeys(Keys.ENTER);
         Thread.sleep(2000);
 
-        WebElement balanceEnquiry = driver.findElement(By.xpath("//a[normalize-space()='Balance Enquiry']"));
-        balanceEnquiry.click();
+//        WebElement balanceEnquiry = driver.findElement(By.xpath("//a[normalize-space()='Balance Enquiry']"));
+//        balanceEnquiry.click();
+//
+//        WebElement BalanceEnquiryPageAccountNo = driver.findElement(By.name("accountno"));
+//        Select select = new Select(BalanceEnquiryPageAccountNo);
+//        Thread.sleep(2000);
+//        select.selectByIndex(2);
+//        BalanceEnquiryPageAccountNo.sendKeys(Keys.ENTER);
+//        Thread.sleep(2000);
+//        driver.navigate().back();
+//        Thread.sleep(2000);
 
-        WebElement BalanceEnquiryPageAccountNo = driver.findElement(By.name("accountno"));
-        Select select = new Select(BalanceEnquiryPageAccountNo);
-        Thread.sleep(2000);
-        select.selectByIndex(1);
-        BalanceEnquiryPageAccountNo.sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
-        driver.navigate().back();
-        Thread.sleep(2000);
+//        WebElement SecurityPageMiniStatement = driver.findElement(By.xpath("//a[normalize-space()='Mini Statement']"));
+//        SecurityPageMiniStatement.click();
+//        Thread.sleep(2000);
+//        Select selectAcNo = new Select(SecurityPageMiniStatement);
+//        Thread.sleep(2000);
+//        selectAcNo.selectByIndex(1);
+//        SecurityPageMiniStatement.sendKeys(Keys.ENTER);
 
-        WebElement SecurityPageMiniStatement = driver.findElement(By.xpath("//a[normalize-space()='Mini Statement']"));
-        SecurityPageMiniStatement.click();
-        Thread.sleep(2000);
-        Select select = new Select(SecurityPageMiniStatement);
-        Thread.sleep(2000);
-        select.selectByIndex(1);
-        SecurityPageMiniStatement.sendKeys(Keys.ENTER);
+        WebElement SecurityPageContactUs = driver.findElement(By.xpath("//a[normalize-space()='Contact Us']"));
+        SecurityPageContactUs.click();
+        Thread.sleep(1000);
+        WebElement name = driver.findElement(By.name("name"));
+        name.sendKeys("Poonam Singh");
+        Thread.sleep(1000);
+        WebElement emailId = driver.findElement(By.name("emailid"));
+        emailId.sendKeys("erpunu96@gmail.com");
+        Thread.sleep(1000);
+        WebElement contactNo = driver.findElement(By.name("telephoneno"));
+        contactNo.sendKeys("6299807887");
+        Thread.sleep(1000);
+        WebElement message = driver.findElement(By.name("addr"));
+        message.sendKeys("Automation Testing");
+        Thread.sleep(1000);
+        WebElement UploadFile = driver.findElement(By.id("fileToUpload"));
+        UploadFile.sendKeys("/Users/saharsh.s/Desktop/Selenium/SeleniumBase/AccessDemo_Screenshot.png");
+        Thread.sleep(25000);
+        UploadFile.sendKeys(Keys.ENTER);
+        WebElement logout = driver.findElement(By.xpath("//a[normalize-space()='Log out']"));
+        logout.click();
 
 
 
